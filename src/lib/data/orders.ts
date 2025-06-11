@@ -6,6 +6,11 @@ import { getAuthHeaders, getCacheOptions } from "./cookies"
 import { HttpTypes } from "@medusajs/types"
 
 export const retrieveOrder = async (id: string) => {
+  // Mock data para desarrollo frontend
+  return null
+
+  // Código original comentado
+  /*
   const headers = {
     ...(await getAuthHeaders()),
   }
@@ -27,6 +32,7 @@ export const retrieveOrder = async (id: string) => {
     })
     .then(({ order }) => order)
     .catch((err) => medusaError(err))
+  */
 }
 
 export const listOrders = async (
@@ -34,6 +40,11 @@ export const listOrders = async (
   offset: number = 0,
   filters?: Record<string, any>
 ) => {
+  // Mock data para desarrollo frontend
+  return []
+
+  // Código original comentado
+  /*
   const headers = {
     ...(await getAuthHeaders()),
   }
@@ -58,6 +69,7 @@ export const listOrders = async (
     })
     .then(({ orders }) => orders)
     .catch((err) => medusaError(err))
+  */
 }
 
 export const createTransferRequest = async (

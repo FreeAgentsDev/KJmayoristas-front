@@ -22,6 +22,18 @@ export const listProducts = async ({
   nextPage: number | null
   queryParams?: HttpTypes.FindParams & HttpTypes.StoreProductParams
 }> => {
+  // Mock data para desarrollo frontend
+  return {
+    response: {
+      products: [],
+      count: 0
+    },
+    nextPage: null,
+    queryParams
+  }
+
+  // Código original comentado
+  /*
   if (!countryCode && !regionId) {
     throw new Error("Country code or region ID is required")
   }
@@ -83,6 +95,7 @@ export const listProducts = async ({
         queryParams,
       }
     })
+  */
 }
 
 /**
