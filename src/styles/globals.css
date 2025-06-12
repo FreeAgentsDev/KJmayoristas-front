@@ -1,9 +1,58 @@
-@import "tailwindcss/base";
-@import "tailwindcss/components";
-@import "tailwindcss/utilities";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
+/* ============================= */
+/*        BASE GLOBAL STYLES     */
+/* ============================= */
+@layer base {
+  :root {
+    --color-pearl: #FDFBF7;
+    --color-gold: #D4AF37;
+    --color-gold-light: #E5C76B;
+    --color-elegant: #E5E7EB;
+    --color-champagne: #F7E7CE;
+    --color-rose: #E11D48;
+  }
+
+  html {
+    @apply font-body bg-pearl text-grey-80;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-title text-grey-80;
+  }
+
+  p, span, div, a, button, input, textarea, select {
+    @apply font-body text-grey-80;
+  }
+
+  /* Elementos especiales que pueden usar la fuente de acento */
+  .badge, .price, .discount, .tag, .label-accent {
+    @apply font-accent text-gold;
+  }
+
+  /* Enlaces */
+  a {
+    @apply text-gold hover:text-gold-light transition-colors duration-200;
+  }
+
+  /* Botones */
+  button {
+    @apply bg-gold text-grey-80 hover:bg-gold-light transition-colors duration-200;
+  }
+
+  /* Inputs */
+  input, textarea, select {
+    @apply bg-pearl border border-elegant focus:border-gold focus:ring-1 focus:ring-gold;
+  }
+}
+
+/* ============================= */
+/*         UTILITIES             */
+/* ============================= */
 @layer utilities {
-  /* Chrome, Safari and Opera */
+  /* Scrollbar oculta */
   .no-scrollbar::-webkit-scrollbar {
     display: none;
   }
@@ -13,10 +62,20 @@
   }
 
   .no-scrollbar {
-    -ms-overflow-style: none; /* IE and Edge */
-    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none;
+    scrollbar-width: none;
   }
 
+  /* Animaciones */
+  .animation-delay-2000 {
+    animation-delay: 2s;
+  }
+
+  .animation-delay-4000 {
+    animation-delay: 4s;
+  }
+
+  /* Label animado flotante */
   input:focus ~ label,
   input:not(:placeholder-shown) ~ label {
     @apply -translate-y-2 text-xsmall-regular;
@@ -26,6 +85,7 @@
     @apply left-0;
   }
 
+  /* Autocompletado */
   input:-webkit-autofill,
   input:-webkit-autofill:hover,
   input:-webkit-autofill:focus,
@@ -37,10 +97,11 @@
   select:-webkit-autofill:focus {
     border: 1px solid #212121;
     -webkit-text-fill-color: #212121;
-    -webkit-box-shadow: 0 0 0px 1000px #fff inset;
+    -webkit-box-shadow: 0 0 0px 1000px var(--color-pearl) inset;
     transition: background-color 5000s ease-in-out 0s;
   }
 
+  /* Buscador */
   input[type="search"]::-webkit-search-decoration,
   input[type="search"]::-webkit-search-cancel-button,
   input[type="search"]::-webkit-search-results-button,
@@ -49,64 +110,76 @@
   }
 }
 
+/* ============================= */
+/*        COMPONENTS             */
+/* ============================= */
 @layer components {
   .content-container {
     @apply max-w-[1440px] w-full mx-auto px-6;
   }
 
   .contrast-btn {
-    @apply px-4 py-2 border border-black rounded-full hover:bg-black hover:text-white transition-colors duration-200 ease-in;
+    @apply px-4 py-2 border border-gold rounded-full hover:bg-gold hover:text-grey-80 transition-colors duration-200 ease-in;
   }
 
-  .text-xsmall-regular {
-    @apply text-[10px] leading-4 font-normal;
+  .card {
+    @apply bg-pearl/50 p-6 rounded-lg shadow-sm border border-elegant;
   }
 
-  .text-small-regular {
-    @apply text-xs leading-5 font-normal;
+  .highlight-section {
+    @apply bg-champagne/30 p-6 rounded-lg;
   }
 
-  .text-small-semi {
-    @apply text-xs leading-5 font-semibold;
+  .nav-item {
+    @apply text-grey-80 hover:text-gold transition-colors duration-200;
   }
 
-  .text-base-regular {
-    @apply text-sm leading-6 font-normal;
+  .price-tag {
+    @apply text-gold font-semibold;
   }
 
-  .text-base-semi {
-    @apply text-sm leading-6 font-semibold;
+  .alert {
+    @apply bg-rose/20 text-rose border border-rose/30 rounded-lg p-4;
   }
 
-  .text-large-regular {
-    @apply text-base leading-6 font-normal;
+  .form-group {
+    @apply space-y-2;
   }
 
-  .text-large-semi {
-    @apply text-base leading-6 font-semibold;
+  .form-label {
+    @apply text-grey-80 text-sm font-body;
   }
 
-  .text-xl-regular {
-    @apply text-2xl leading-[36px] font-normal;
+  .form-input {
+    @apply w-full px-4 py-2 bg-pearl border border-elegant rounded-lg focus:border-gold focus:ring-1 focus:ring-gold font-body;
   }
 
-  .text-xl-semi {
-    @apply text-2xl leading-[36px] font-semibold;
-  }
+  /* Tipografías */
+  .text-xsmall-regular  { @apply text-[10px] leading-4 font-normal font-body; }
+  .text-small-regular   { @apply text-xs leading-5 font-normal font-body; }
+  .text-small-semi      { @apply text-xs leading-5 font-semibold font-body; }
+  .text-base-regular    { @apply text-sm leading-6 font-normal font-body; }
+  .text-base-semi       { @apply text-sm leading-6 font-semibold font-body; }
+  .text-large-regular   { @apply text-base leading-6 font-normal font-body; }
+  .text-large-semi      { @apply text-base leading-6 font-semibold font-body; }
+  .text-xl-regular      { @apply text-2xl leading-[36px] font-normal font-body; }
+  .text-xl-semi         { @apply text-2xl leading-[36px] font-semibold font-body; }
+  .text-2xl-regular     { @apply text-[30px] leading-[48px] font-normal font-body; }
+  .text-2xl-semi        { @apply text-[30px] leading-[48px] font-semibold font-body; }
+  .text-3xl-regular     { @apply text-[32px] leading-[44px] font-normal font-body; }
+  .text-3xl-semi        { @apply text-[32px] leading-[44px] font-semibold font-body; }
+}
 
-  .text-2xl-regular {
-    @apply text-[30px] leading-[48px] font-normal;
-  }
+/* ============================= */
+/*        CUSTOM ANIMATIONS      */
+/* ============================= */
+@keyframes blob {
+  0%   { transform: translate(0px, 0px) scale(1); }
+  33%  { transform: translate(30px, -50px) scale(1.1); }
+  66%  { transform: translate(-20px, 20px) scale(0.9); }
+  100% { transform: translate(0px, 0px) scale(1); }
+}
 
-  .text-2xl-semi {
-    @apply text-[30px] leading-[48px] font-semibold;
-  }
-
-  .text-3xl-regular {
-    @apply text-[32px] leading-[44px] font-normal;
-  }
-
-  .text-3xl-semi {
-    @apply text-[32px] leading-[44px] font-semibold;
-  }
+.animate-blob {
+  animation: blob 7s infinite;
 }

@@ -3,14 +3,42 @@
 import { sdk } from "@lib/config"
 import { HttpTypes } from "@medusajs/types"
 
+export const listRegions = async () => {
+  // Mock data para desarrollo frontend
+  return [
+    {
+      id: "1",
+      name: "América",
+      countries: [
+        { iso_2: "MX", name: "México" },
+        { iso_2: "US", name: "Estados Unidos" }
+      ]
+    }
+  ] as HttpTypes.StoreRegion[]
+}
+
 export const retrieveRegion = async (id: string) => {
   // Mock data para desarrollo frontend
-  return null
+  return {
+    id,
+    name: "América",
+    countries: [
+      { iso_2: "MX", name: "México" },
+      { iso_2: "US", name: "Estados Unidos" }
+    ]
+  } as HttpTypes.StoreRegion
 }
 
 export const getRegion = async (countryCode: string) => {
   // Mock data para desarrollo frontend
-  return null
+  return {
+    id: "1",
+    name: "América",
+    countries: [
+      { iso_2: "MX", name: "México" },
+      { iso_2: "US", name: "Estados Unidos" }
+    ]
+  } as HttpTypes.StoreRegion
 }
 
 // "use server"

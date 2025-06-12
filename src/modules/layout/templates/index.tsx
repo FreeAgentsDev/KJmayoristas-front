@@ -1,14 +1,14 @@
 import React from "react"
 
-import Footer from "@modules/layout/templates/footer"
-import Nav from "@modules/layout/templates/nav"
+import Navbar from "../../common/components/Navbar"
+import Footer from "../../common/components/Footer"
 
 const Layout: React.FC<{
   children: React.ReactNode
 }> = ({ children }) => {
   return (
     <div>
-      <Nav />
+      <Navbar />
       <main className="relative">{children}</main>
       <Footer />
     </div>

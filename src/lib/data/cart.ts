@@ -49,3 +49,15 @@ export const completeCart = async (id: string) => {
   // Mock data para desarrollo frontend
   return null
 }
+
+export const listCartOptions = async () => {
+  // Mock data para desarrollo frontend
+  return {
+    shipping_options: []
+  }
+}
+
+export const updateRegion = async (id: string, regionId: string) => {
+  // Mock data para desarrollo frontend
+  return null
+}
